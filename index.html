@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jas Mehra - Digital Creator & Network Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4ecdc4;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 70%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(78, 205, 196, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #cccccc;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .age-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Card Styling */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            color: #4ecdc4;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: #cccccc;
+            margin-bottom: 1rem;
+        }
+
+        .card a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .card a:hover {
+            color: #4ecdc4;
+        }
+
+        /* Network Cards */
+        .network-card {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(78, 205, 196, 0.1) 100%);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+        }
+
+        /* Channel Cards */
+        .channel-card {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(69, 183, 209, 0.1) 100%);
+            border: 1px solid rgba(69, 183, 209, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid #333;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #4ecdc4, #ff6b6b);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Jas Mehra</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#networks">Networks</a></li>
+                <li><a href="#channels">Channels</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="age-badge">Age 17 • Student</div>
+            <h1>Jas Mehra</h1>
+            <p>Digital Creator & Network Manager</p>
+            <p>Managing multiple Telegram networks and channels focused on anime, entertainment, and community building</p>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="contact-info">
+                <p>I'm a 17-year-old student passionate about digital content creation and community management. I manage multiple Telegram networks that serve thousands of users with anime content, movies, K-dramas, and more. My goal is to create engaging communities where people can discover and enjoy quality entertainment content.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="networks" class="section">
+        <div class="container">
+            <h2 class="section-title">My Networks</h2>
+            <div class="card-grid">
+                <div class="card network-card">
+                    <h3>@Nova_Networks</h3>
+                    <p>Primary network hub for all entertainment content and community management</p>
+                    <a href="https://t.me/Nova_Networks" target="_blank">Visit Network →</a>
+                </div>
+                <div class="card network-card">
+                    <h3>@Bots_Nation</h3>
+                    <p>Specialized network for bot services and automation solutions</p>
+                    <a href="https://t.me/Bots_Nation" target="_blank">Visit Network →</a>
+                </div>
+                <div class="card network-card">
+                    <h3>@Adults_Complex</h3>
+                    <p>Mature content network for adult audience entertainment</p>
+                    <a href="https://t.me/Adults_Complex" target="_blank">Visit Network →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="channels" class="section">
+        <div class="container">
+            <h2 class="section-title">My Channels</h2>
+            <div class="card-grid">
+                <div class="card channel-card">
+                    <h3>@Anime_x_Nova</h3>
+                    <p>Main anime channel featuring the latest and greatest anime content</p>
+                    <a href="https://t.me/Anime_x_Nova" target="_blank">Join Channel →</a>
+                </div>
+                <div class="card channel-card">
+                    <h3>Main Anime Channel</h3>
+                    <p>Premium anime content and exclusive releases</p>
+                    <a href="https://t.me/+OiBX1zWcnuE3ZmY1" target="_blank">Join Channel →</a>
+                </div>
+                <div class="card channel-card">
+                    <h3>@Ongoing_Phoenix_Anime</h3>
+                    <p>Currently airing anime series and episode updates</p>
+                    <a href="https://t.me/Ongoing_Phoenix_Anime" target="_blank">Join Channel →</a>
+                </div>
+                <div class="card channel-card">
+                    <h3>@All_Movies_worlds</h3>
+                    <p>Movies and TV series from around the world</p>
+                    <a href="https://t.me/All_Movies_worlds" target="_blank">Join Channel →</a>
+                </div>
+                <div class="card channel-card">
+                    <h3>@Kdrama_Hindii_Dub</h3>
+                    <p>Korean dramas with Hindi dubbing and subtitles</p>
+                    <a href="https://t.me/Kdrama_Hindii_Dub" target="_blank">Join Channel →</a>
+                </div>
+                <div class="card channel-card">
+                    <h3>@Anime_Nova_Chat_Group</h3>
+                    <p>Community chat group for anime discussions and support</p>
+                    <a href="https://t.me/Anime_Nova_Chat_Group" target="_blank">Join Group →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-info">
+                <p>Connect with me on various platforms or join my communities for the latest updates and content!</p>
+                <div class="contact-links">
+                    <a href="https://t.me/Jas_Mehra" class="contact-btn" target="_blank">
+                        📱 Telegram
+                    </a>
+                    <a href="https://instagram.com/Jas__mehra12" class="contact-btn" target="_blank">
+                        📷 Instagram
+                    </a>
+                    <a href="https://t.me/Nova_Networks" class="contact-btn" target="_blank">
+                        🌐 Main Network
+                    </a>
+                    <a href="https://t.me/Anime_Nova_Chat_Group" class="contact-btn" target="_blank">
+                        💬 Support Group
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jas Mehra. All rights reserved. Managing 3 networks and growing! 🚀</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.9)';
+            }
+        });
+
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
